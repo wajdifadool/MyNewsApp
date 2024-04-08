@@ -60,7 +60,7 @@ public class BaseArticlesFragment extends Fragment
      */
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
-     //todo: load more items on the last card
+     //todo: load more items on the last card -
      // https://stackoverflow.com/questions/36127734/detect-when-recyclerview-reaches-the-bottom-most-position-while-scrolling
     //
     @Override
@@ -175,12 +175,8 @@ public class BaseArticlesFragment extends Fragment
                 getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
-//        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-//
-//        return (networkInfo != null && networkInfo.isConnected());
-
-        // TODO: 23/03/2024 check for internet conection
-        return true ;
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 
     /**

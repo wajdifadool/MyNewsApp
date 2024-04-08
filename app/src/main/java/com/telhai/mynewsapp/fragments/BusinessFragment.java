@@ -1,6 +1,5 @@
 package com.telhai.mynewsapp.fragments;
 
-import androidx.fragment.app.Fragment;
 
 import com.telhai.mynewsapp.NewsPreferences;
 
@@ -12,7 +11,7 @@ import android.util.Log;
 
 import com.telhai.mynewsapp.model.News;
 import com.telhai.mynewsapp.model.NewsLoader;
-import com.telhai.mynewsapp.NewsPreferences;
+
 import com.telhai.mynewsapp.R;
 
 /**

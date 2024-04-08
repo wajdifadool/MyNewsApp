@@ -61,16 +61,6 @@ public class SettingsActivity extends AppCompatActivity {
             // Update the summary so that it displays the current value stored in SharedPreferences
             bindPreferenceSummaryToValue(orderDate);
 
-            // Find the "color theme" Preference object according to its key
-            Preference colorTheme = findPreference(getString(R.string.settings_color_key));
-            // Update the summary so that it displays the current value stored in SharedPreferences
-            bindPreferenceSummaryToValue(colorTheme);
-
-            // Find the "text size" Preference object according to its key
-            Preference textSize = findPreference(getString(R.string.settings_text_size_key));
-            // Update the summary so that it displays the current value stored in SharedPreferences
-            bindPreferenceSummaryToValue(textSize);
-
             // Find the "from date" Preference object according to its key
             Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
             setOnPreferenceClick(fromDate);

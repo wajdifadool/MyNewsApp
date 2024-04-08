@@ -8,9 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.Html;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.util.TypedValue;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.telhai.mynewsapp.R;
 import com.telhai.mynewsapp.model.News;
+import com.telhai.mynewsapp.utils.Utils;
 import com.telhai.mynewsapp.utils.WebActivity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+
 
 /**
  * A {@link NewsAdapter} can provide a card item layout for each news in the data source
@@ -40,7 +35,6 @@ import java.util.TimeZone;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     private Context mContext;
     private List<News> mNewsList;
-    private SharedPreferences sharedPrefs;
 
     /**
      * Constructs a new {@link NewsAdapter}
@@ -88,13 +82,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
 
-        // Change the color theme of Title TextView by using the user's stored preferences
-        setColorTheme(holder);
-
-        // Change text size of TextView by using the user's stored preferences
-        setTextSize(holder);
+        holder.titleTextView.setBackgroundResource(R.color.white);
+        holder.titleTextView.setTextColor(Color.BLACK);
 
         // Find the current news that was clicked on
         final News currentNews = mNewsList.get(position);
@@ -111,7 +101,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         // Get time difference between the current date and web publication date and
         // set the time difference on the textView
-        holder.dateTextView.setText(getTimeDifference(formatDate(currentNews.getDate())));
+        holder.dateTextView.setText(Utils.getTimeDifference(Utils.formatDate(currentNews.getDate())));
 
         // Get string of the trailTextHTML and convert Html text to plain text
         // and set the plain text on the textView
@@ -122,12 +112,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                // Uri newsUri = Uri.parse(currentNews.getUrl());
-
                 // Create a new intent to view the news URI
-                //  Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
-
                 // Update: open the article from the app
                 Intent intent = new Intent(mContext, WebActivity.class);
                 Uri newsUri = Uri.parse(currentNews.getUrl());
@@ -157,87 +144,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
     /**
-     * Set the user preferred color theme
-     */
-    private void setColorTheme(ViewHolder holder) {
-        // Get the color theme string from SharedPreferences and check for the value associated with the key
-        String colorTheme = sharedPrefs.getString(
-                mContext.getString(R.string.settings_color_key),
-                mContext.getString(R.string.settings_color_default));
-
-        // Change the background color of titleTextView by using the user's stored preferences
-        if (colorTheme.equals(mContext.getString(R.string.settings_color_white_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.white);
-            holder.titleTextView.setTextColor(Color.BLACK);
-        }else if (colorTheme.equals(mContext.getString(R.string.settings_color_sky_blue_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.nav_bar_start);
-            holder.titleTextView.setTextColor(Color.WHITE);
-        } else if (colorTheme.equals(mContext.getString(R.string.settings_color_dark_blue_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.color_app_bar_text);
-            holder.titleTextView.setTextColor(Color.WHITE);
-        } else if (colorTheme.equals(mContext.getString(R.string.settings_color_violet_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.violet);
-            holder.titleTextView.setTextColor(Color.WHITE);
-        } else if (colorTheme.equals(mContext.getString(R.string.settings_color_light_green_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.light_green);
-            holder.titleTextView.setTextColor(Color.WHITE);
-        } else if (colorTheme.equals(mContext.getString(R.string.settings_color_green_value))) {
-            holder.titleTextView.setBackgroundResource(R.color.color_section);
-            holder.titleTextView.setTextColor(Color.WHITE);
-        }
-    }
-
-    /**
-     * Set the text size to the text size the user choose.
-     */
-    private void setTextSize(ViewHolder holder) {
-        // Get the text size string from SharedPreferences and check for the value associated with the key
-        String textSize = sharedPrefs.getString(
-                mContext.getString(R.string.settings_text_size_key),
-                mContext.getString(R.string.settings_text_size_default));
-
-        // Change text size of TextView by using the user's stored preferences
-        if(textSize.equals(mContext.getString(R.string.settings_text_size_medium_value))) {
-            holder.titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp22));
-            holder.sectionTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp14));
-            holder.trailTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp16));
-            holder.authorTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp14));
-            holder.dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp14));
-        } else if(textSize.equals(mContext.getString(R.string.settings_text_size_small_value))) {
-            holder.titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp20));
-            holder.sectionTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp12));
-            holder.trailTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp14));
-            holder.authorTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp12));
-            holder.dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp12));
-        } else if(textSize.equals(mContext.getString(R.string.settings_text_size_large_value))) {
-            holder.titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp24));
-            holder.sectionTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp16));
-            holder.trailTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp18));
-            holder.authorTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp16));
-            holder.dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                    mContext.getResources().getDimension(R.dimen.sp16));
-        }
-    }
-
-    /**
      * Share the article with friends in social network
      * @param news {@link News} object
      */
     private void shareData(News news) {
+        // https://developer.android.com/training/sharing/send
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_TEXT,
@@ -264,70 +175,4 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    /**
-     * Convert date and time in UTC (webPublicationDate) into a more readable representation
-     * in Local time
-     *
-     * @param dateStringUTC is the web publication date of the article (i.e. 2014-02-04T08:00:00Z)
-     * @return the formatted date string in Local time(i.e "Jan 1, 2000  2:15 AM")
-     * from a date and time in UTC
-     */
-    private String formatDate(String dateStringUTC) {
-        // Parse the dateString into a Date object
-        SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss'Z'");
-        Date dateObject = null;
-        try {
-            dateObject = simpleDateFormat.parse(dateStringUTC);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        // Initialize a SimpleDateFormat instance and configure it to provide a more readable
-        // representation according to the given format, but still in UTC
-        SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy  h:mm a", Locale.ENGLISH);
-        String formattedDateUTC = df.format(dateObject);
-        // Convert UTC into Local time
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date date = null;
-        try {
-            date = df.parse(formattedDateUTC);
-            df.setTimeZone(TimeZone.getDefault());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return df.format(date);
-    }
-
-    /**
-     * Get the formatted web publication date string in milliseconds
-     * @param formattedDate the formatted web publication date string
-     * @return the formatted web publication date in milliseconds
-     */
-    private static long getDateInMillis(String formattedDate) {
-        SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat("MMM d, yyyy  h:mm a");
-        long dateInMillis;
-        Date dateObject;
-        try {
-            dateObject = simpleDateFormat.parse(formattedDate);
-            dateInMillis = dateObject.getTime();
-            return dateInMillis;
-        } catch (ParseException e) {
-            Log.e("Problem parsing date", e.getMessage());
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    /**
-     * Get the time difference between the current date and web publication date
-     * @param formattedDate the formatted web publication date string
-     * @return time difference (i.e "9 hours ago")
-     */
-    private CharSequence getTimeDifference(String formattedDate) {
-        long currentTime = System.currentTimeMillis();
-        long publicationTime = getDateInMillis(formattedDate);
-        return DateUtils.getRelativeTimeSpanString(publicationTime, currentTime,
-                DateUtils.SECOND_IN_MILLIS);
-    }
 }
