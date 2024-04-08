@@ -1,4 +1,4 @@
-package com.telhai.mynewsapp.utils;
+package com.telhai.mynewsapp.DataService;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -6,6 +6,7 @@ import android.util.Log;
 
 
 import com.telhai.mynewsapp.model.News;
+import com.telhai.mynewsapp.utils.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +22,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.telhai.mynewsapp.utils.Constants.* ;
+
 
 /**
  * Helper methods related to requesting and receiving news data from Guardian.

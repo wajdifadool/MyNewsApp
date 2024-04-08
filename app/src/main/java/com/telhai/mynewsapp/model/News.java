@@ -1,6 +1,5 @@
 package com.telhai.mynewsapp.model;
 
-
 /**
  * An {@link News} object contains information related to a single news.
  */
@@ -8,12 +7,14 @@ package com.telhai.mynewsapp.model;
 public class News {
 
     /** Title of the article */
+
     private String mTitle;
 
     /** Section name of the article*/
     private String mSection;
 
     /** Author name in the article */
+
     private String mAuthor;
 
     /** Web publication date of the article */

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import com.telhai.mynewsapp.model.News;
-import com.telhai.mynewsapp.model.NewsLoader;
+import com.telhai.mynewsapp.DataService.NewsLoader;
 import com.telhai.mynewsapp.NewsPreferences;
 import com.telhai.mynewsapp.R;
 import java.util.List;

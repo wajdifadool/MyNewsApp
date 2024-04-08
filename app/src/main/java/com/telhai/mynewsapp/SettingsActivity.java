@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.DatePicker;
 
+import com.telhai.mynewsapp.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

@@ -1,11 +1,11 @@
-package com.telhai.mynewsapp.model;
+package com.telhai.mynewsapp.DataService;
 
 
 import androidx.loader.content.AsyncTaskLoader;
 import android.content.Context;
 
 
-import com.telhai.mynewsapp.utils.QueryUtils;
+import com.telhai.mynewsapp.model.News;
 
 import java.util.List;
 
@@ -49,6 +49,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
         // Perform the network request, parse the response, and extract a list of news.
         List<News> newsData = QueryUtils.fetchNewsData(mUrl);
+
         return newsData;
     }
 }

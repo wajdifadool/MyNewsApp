@@ -7,30 +7,30 @@ public class Constants {
      */
     private Constants() {
     }
+    public static final String JSON_KEY_RESPONSE = "response";
+    public static final String JSON_KEY_RESULTS = "results";
+    public static final String JSON_KEY_WEB_TITLE = "webTitle";
+    public static final String JSON_KEY_SECTION_NAME = "sectionName";
+    public static final String JSON_KEY_WEB_PUBLICATION_DATE = "webPublicationDate";
+    public static final String JSON_KEY_WEB_URL = "webUrl";
 
     /**  Extract the key associated with the JSONObject */
-    static final String JSON_KEY_RESPONSE = "response";
-    static final String JSON_KEY_RESULTS = "results";
-    static final String JSON_KEY_WEB_TITLE = "webTitle";
-    static final String JSON_KEY_SECTION_NAME = "sectionName";
-    static final String JSON_KEY_WEB_PUBLICATION_DATE = "webPublicationDate";
-    static final String JSON_KEY_WEB_URL = "webUrl";
-    static final String JSON_KEY_TAGS = "tags";
-    static final String JSON_KEY_FIELDS = "fields";
-    static final String JSON_KEY_THUMBNAIL = "thumbnail";
-    static final String JSON_KEY_TRAIL_TEXT = "trailText";
+    public static final String JSON_KEY_TAGS = "tags";
+   public static final String JSON_KEY_FIELDS = "fields";
+    public static final String JSON_KEY_THUMBNAIL = "thumbnail";
+    public static final String JSON_KEY_TRAIL_TEXT = "trailText";
 
     /** Read timeout for setting up the HTTP request */
-    static final int READ_TIMEOUT = 10000; /* milliseconds */
+    public static final int READ_TIMEOUT = 10000; /* milliseconds */
 
     /** Connect timeout for setting up the HTTP request */
-    static final int CONNECT_TIMEOUT = 15000; /* milliseconds */
+    public static final int CONNECT_TIMEOUT = 15000; /* milliseconds */
 
     /** HTTP response code when the request is successful */
-    static final int SUCCESS_RESPONSE_CODE = 200;
+    public  static final int SUCCESS_RESPONSE_CODE = 200;
 
     /** Request method type "GET" for reading information from the server */
-    static final String REQUEST_METHOD_GET = "GET";
+    public  static final String REQUEST_METHOD_GET = "GET";
 
     /** URL for news data from the guardian data set */
     public static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/search";

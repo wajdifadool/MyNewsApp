@@ -3,10 +3,8 @@ package com.telhai.mynewsapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.text.Html;
 
 import android.view.LayoutInflater;
@@ -22,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.telhai.mynewsapp.R;
 import com.telhai.mynewsapp.model.News;
 import com.telhai.mynewsapp.utils.Utils;
-import com.telhai.mynewsapp.utils.WebActivity;
+import com.telhai.mynewsapp.WebActivity;
 
 import java.util.List;
 

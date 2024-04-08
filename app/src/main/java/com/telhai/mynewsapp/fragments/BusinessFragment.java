@@ -10,7 +10,7 @@ import androidx.loader.content.Loader;
 import android.util.Log;
 
 import com.telhai.mynewsapp.model.News;
-import com.telhai.mynewsapp.model.NewsLoader;
+import com.telhai.mynewsapp.DataService.NewsLoader;
 
 import com.telhai.mynewsapp.R;
 

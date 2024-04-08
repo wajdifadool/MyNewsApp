@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 
-
-
 import static com.telhai.mynewsapp.utils.Constants.* ;
 
 import com.telhai.mynewsapp.utils.Constants;
@@ -72,9 +70,6 @@ public final class NewsPreferences {
      */
     public static String getPreferredUrl(Context context, String section) {
         Uri.Builder uriBuilder = getPreferredUri(context);
-
-
-
         return uriBuilder.appendQueryParameter(SECTION_PARAM, section).toString();
     }
 }

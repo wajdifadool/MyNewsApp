@@ -1,4 +1,4 @@
-package com.telhai.mynewsapp.utils;
+package com.telhai.mynewsapp;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,9 +12,7 @@ import 	android.content.Intent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import com.telhai.mynewsapp.R;
 
 public class WebActivity extends AppCompatActivity {
 

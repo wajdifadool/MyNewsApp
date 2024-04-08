@@ -1,7 +1,5 @@
 package com.telhai.mynewsapp;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,14 +11,12 @@ import androidx.core.view.GravityCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.os.Bundle;
+
 import com.telhai.mynewsapp.adapters.CategoryFragmentPagerAdapter;
 import com.telhai.mynewsapp.utils.Constants;
-import com.telhai.mynewsapp.utils.WebActivity;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -33,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
