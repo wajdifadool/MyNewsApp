@@ -43,13 +43,7 @@ https://developer.android.com/jetpack/androidx/releases/swiperefreshlayout
 
 
 
-![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/34111b07-ed47-451a-8819-79fe2ca493c8)
-
-![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/679c2dee-fa69-4cbb-9b5a-7530284519af)
-
-![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/c5da5214-e9d2-4109-a100-f5b13cbc7cff)
-    
-![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/7701272c-e945-428b-bc3e-ce8e0bdd0784)
+![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/34111b07-ed47-451a-8819-79fe2ca493c8) ![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/679c2dee-fa69-4cbb-9b5a-7530284519af) ![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/c5da5214-e9d2-4109-a100-f5b13cbc7cff) ![image](https://github.com/wajdifadool/MyNewsApp/assets/16064194/7701272c-e945-428b-bc3e-ce8e0bdd0784)
 
 
 
