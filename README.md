@@ -1,5 +1,6 @@
 
-# Android Final project Tel-hai Collage
+### Android Final project Tel-hai Collage
+### Real-Time News App with Guardian API
 
 
 Our project provides users with real-time news sourced from the Guardian API. The application features a comprehensive collection of the latest news articles, organized into tabs for easy navigation based on categories such as global news, science, sports, and more.
